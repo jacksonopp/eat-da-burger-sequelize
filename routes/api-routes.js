@@ -25,4 +25,12 @@ module.exports = function (app) {
         })
         res.json(dbBurger);
     })
+
+    //initialize
+    app.post("/api/burger/init/:name", async function (req, res) {
+        const dbBurger = await db.Burger.create({
+            burger_name: req.params.name
+        })
+        res.json(dbBurger);
+    })
 }

@@ -1,14 +1,18 @@
 
 <div class="row">
     <div class="col-5 text-right">
-        {{#each itemNotEaten}}
-            <p>{{burger}} <button type="submit" class="btn btn-primary ml-2 move-button" data-value={{id}} onclick="put({{id}})">Devour It</button></p>
+        {{#each burger}}
+            {{#unless devoured}}
+                <p>{{burger_name}} <button type="submit" class="btn btn-primary ml-2 move-button" data-value={{id}}>Devour It</button></p>
+            {{/unless}}
         {{/each}}
     </div>
     <div class="col-2"></div>
     <div class="col-5 text-left">
-        {{#each itemEaten}}
-            <p>{{burger}}</p>
+        {{#each burger}}
+            {{#if devoured}}
+                <p>{{burger_name}}</p>
+            {{/if}}
         {{/each}}
     </div>
 </div>
@@ -18,7 +22,7 @@
             <label for="burger-input">Type your burger here:</label><br>
             <input type="text" id="burger-input" />
             <br />
-            <button type="submit" class="btn btn-primary mt-1" id="burger-submit-btn" onclick="post()" value="Submit">
+            <button type="submit" class="btn btn-primary mt-1" id="burger-submit-btn" value="Submit">
                 Submit
             </button>
         </form>
@@ -41,4 +45,4 @@
 </script> --}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js" integrity="sha256-XmdRbTre/3RulhYk/cOBUMpYlaAp2Rpo/s556u0OIKk=" crossorigin="anonymous"></script>
-<script src="requests.js"></script>
+<script src="js/requests.js"></script>
